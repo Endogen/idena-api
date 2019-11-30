@@ -9,10 +9,46 @@ class IdenaAPI:
     def __init__(self, api_url=__API_URL, api_port=__API_PORT):
         self.url = f"{api_url}:{api_port}"
 
+    def identities(self):
+        payload = {
+            "method": "dna_identities",
+            "id": 1
+        }
+        return requests.post(self.url, json=payload).json()
+
+    def identity(self, address):
+        payload = {
+            "method": "dna_identity",
+            "params": [address],
+            "id": 1
+        }
+        return requests.post(self.url, json=payload).json()
+
+    def epoch(self):
+        payload = {
+            "method": "dna_epoch",
+            "id": 1
+        }
+        return requests.post(self.url, json=payload).json()
+
+    def ceremony_intervals(self):
+        payload = {
+            "method": "dna_ceremonyIntervals",
+            "id": 1
+        }
+        return requests.post(self.url, json=payload).json()
+
+    def address(self):
+        payload = {
+            "method": "dna_getCoinbaseAddr",
+            "id": 1
+        }
+        return requests.post(self.url, json=payload).json()
+
     def balance(self, address):
         payload = {
             "method": "dna_getBalance",
-            "params": [f"{address}"],
+            "params": [address],
             "id": 1
         }
         return requests.post(self.url, json=payload).json()
@@ -20,7 +56,7 @@ class IdenaAPI:
     def transactions(self, address, count):
         payload = {
             "method": "bcn_transactions",
-            "params": [{"address": f"{address}", "countd": int(count)}],
+            "params": [{"address": f"{address}", "count": int(count)}],
             "id": 1
         }
         return requests.post(self.url, json=payload).json()
