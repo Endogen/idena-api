@@ -3,11 +3,11 @@ import requests
 
 class IdenaAPI:
 
-    __API_URL = 'http://localhost'
+    __API_HOST = "localhost"
     __API_PORT = "9009"
 
-    def __init__(self, api_url=__API_URL, api_port=__API_PORT):
-        self.url = f"{api_url}:{api_port}"
+    def __init__(self, api_host=__API_HOST, api_port=__API_PORT):
+        self.url = f"http://{api_host}:{api_port}"
 
     def identities(self):
         payload = {
