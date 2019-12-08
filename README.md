@@ -1,6 +1,6 @@
 # Python wrapper for IDENA RPC interface
 
-```pytohn
+```python
 from api import IdenaAPI
 api = IdenaAPI()
 
