@@ -3,15 +3,19 @@ import requests
 
 class IdenaAPI:
 
-    __API_HOST = "localhost"
-    __API_PORT = "9009"
+    _host = "localhost"
+    _port = "9009"
+    _timeout = 3
 
-    def __init__(self, api_host=__API_HOST, api_port=__API_PORT):
-        self.url = f"http://{api_host}:{api_port}"
+    def __init__(self, host=_host, port=_port, timeout=_timeout):
+        self._host = host
+        self._port = port
+        self._timeout = timeout
+        self.url = f"http://{host}:{port}"
 
     def __request(self, url, payload):
         try:
-            response = requests.post(url, json=payload).json()
+            response = requests.post(url, json=payload, timeout=self._timeout).json()
         except Exception as e:
             return {"success": False, "data": repr(e)}
 

@@ -2,8 +2,12 @@
 
 ```python
 from api import IdenaAPI
+
+# Connect to local node
 api = IdenaAPI()
 
+# Connect to remote node
+api = IdenaAPI("123.123.123.123")
 
 # Check balance
 result = api.balance("0x18a5eb84dc215a2f170ff1f78dc1873ed8d04d74")
