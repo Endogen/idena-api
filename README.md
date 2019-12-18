@@ -3,8 +3,11 @@
 ```python
 from api import IdenaAPI
 
-# Connect to local node with default settings
+# Connect to local node with default settings (with no API key)
 api = IdenaAPI()
+
+# Connect to local node with default settings (with API key)
+api = IdenaAPI(api_key="123")
 
 # Connect to remote node
 api = IdenaAPI("123.123.123.123", 9090)
@@ -12,9 +15,9 @@ api = IdenaAPI("123.123.123.123", 9090)
 # Check balance
 result = api.balance("0x18a5eb84dc215a2f170ff1f78dc1873ed8d04d74")
 
-# Always make sure that response was successful
+# Always make sure that the response was successful
 if "error" in result:
-    print(result["error"]["message"])
+    print("ERROR: ", result["error"]["message"])
 elif "success" in result:
     print(result["result"])
 
