@@ -117,7 +117,6 @@ class IdenaAPI:
         }
         return self._request(self.url, payload)
 
-    # TODO: Not working! Which argument to use?
     def go_online(self, api_key=None):
         """ Go online, serve as a valid node and start mining """
         payload = {
@@ -128,7 +127,6 @@ class IdenaAPI:
         }
         return self._request(self.url, payload)
 
-    # TODO: Not working! Which argument to use?
     def go_offline(self, api_key=None):
         """ Go offline, do not serve as a node and stop mining """
         payload = {
