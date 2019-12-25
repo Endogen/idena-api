@@ -221,7 +221,7 @@ class IdenaAPI:
 
     # TODO: Untested!
     def export_key(self, password, api_key=None):
-        """ Import private key to manage specific identity """
+        """ Export private key to backup your identity """
         payload = {
             "key": api_key if api_key else self._api_key,
             "method": "dna_exportKey",
