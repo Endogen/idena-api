@@ -160,12 +160,54 @@ class IdenaAPI:
         return self._request(self.url, payload)
 
     # TODO: Untested!
-    def flip(self, flip_hash, api_key=None):
+    def fetch_flip_short_hashes(self, api_key=None):
+        """ Get hashes for flips in short session """
+        payload = {
+            "key": api_key if api_key else self._api_key,
+            "method": "flip_shortHashes",
+            "id": 1
+        }
+        return self._request(self.url, payload)
+
+    # TODO: Untested!
+    def fetch_flip_long_hashes(self, api_key=None):
+        """ Get hashes for flips in long session """
+        payload = {
+            "key": api_key if api_key else self._api_key,
+            "method": "flip_longHashes",
+            "id": 1
+        }
+        return self._request(self.url, payload)
+
+    # TODO: Untested!
+    def get_flip(self, flip_hash, api_key=None):
         """ Show info about flip by providing his hash """
         payload = {
             "key": api_key if api_key else self._api_key,
             "method": "flip_get",
             "params": [flip_hash],
+            "id": 1
+        }
+        return self._request(self.url, payload)
+
+    # TODO: Untested!
+    def submit_short_answers(self, answers, nonce, epoch, api_key=None):
+        """ Show info about flip by providing his hash """
+        payload = {
+            "key": api_key if api_key else self._api_key,
+            "method": "flip_submitShortAnswers",
+            "params": [{answers, nonce, epoch}],
+            "id": 1
+        }
+        return self._request(self.url, payload)
+
+    # TODO: Untested!
+    def submit_long_answers(self, answers, nonce, epoch, api_key=None):
+        """ Show info about flip by providing his hash """
+        payload = {
+            "key": api_key if api_key else self._api_key,
+            "method": "flip_submitLongAnswers",
+            "params": [{answers, nonce, epoch}],
             "id": 1
         }
         return self._request(self.url, payload)
